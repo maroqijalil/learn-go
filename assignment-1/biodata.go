@@ -22,9 +22,24 @@ func (trainee Trainee) print() {
 	fmt.Println("Alasan:", trainee.reason)
 }
 
+func help() {
+	fmt.Println("Penggunaan: ./assignment-1 [ARGUMEN]")
+	fmt.Println("Coba lagi! Pastikan argumen yang dimasukkan berupa Angka!")
+}
+
 func main() {
-	arg := os.Args[1]
-	number, _ := strconv.Atoi(arg)
+	args := os.Args
+	if len(args) < 2 {
+		help()
+		return
+	}
+
+	arg := args[1]
+	number, e := strconv.Atoi(arg)
+	if e != nil {
+		help()
+		return
+	}
 
 	trainees := []Trainee{}
 
