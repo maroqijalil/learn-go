@@ -9,7 +9,6 @@ import (
 )
 
 type Trainee struct {
-	id      int
 	name    string
 	address string
 	job     string
