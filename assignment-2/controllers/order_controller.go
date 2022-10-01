@@ -2,18 +2,14 @@ package controllers
 
 import "github.com/gin-gonic/gin"
 
-func CreateOrder(c *gin.Context) {
-
+func (controller *Controllers) CreateOrder(context *gin.Context) {
 }
 
-func GetOrders(c *gin.Context) {
-
+func (controller *Controllers) GetOrders(context *gin.Context) {
 }
 
-func UpdateOrder(c *gin.Context) {
-
+func (controller *Controllers) UpdateOrder(context *gin.Context) {
 }
 
-func DeleteOrder(c *gin.Context) {
-
+func (controller *Controllers) DeleteOrder(context *gin.Context) {
 }
