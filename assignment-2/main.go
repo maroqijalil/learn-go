@@ -4,13 +4,17 @@ import (
 	"assignment-2/controllers"
 	"assignment-2/database"
 	"assignment-2/routes"
+	"log"
 )
 
 func main() {
-	database := database.InitDb()
+	db := database.InitDb()
 
-	controllers := &controllers.Controllers{Database: database}
+	c := &controllers.Controllers{Database: db}
 
-	server := routes.InitServer(controllers)
-	server.Run(":8080")
+	server := routes.InitServer(c)
+	err := server.Run(":8080")
+	if err != nil {
+		log.Println("failed to start server")
+	}
 }
