@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Weather</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        main {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content p {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <p id="water">Water 0.0 meter (aman)</p>
+            <p id="wind">Wind 0.0 meter/detik (aman)</p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const updateData = () => {
+                fetch("http://localhost:8080/api/status")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const water = data.status.water;
+                        const waterElement = document.getElementById("water");
+                        let waterStatus = "aman";
+                        if (water > 5 && water <= 8) {
+                            waterStatus = "siaga";
+                        } else if (water > 8) {
+                            waterStatus = "bahaya";
+                        }
+
+                        waterElement.innerText = `Water ${water.toFixed(2)} meter (${waterStatus})`;
+
+
+                        const wind = data.status.wind;
+                        const windElement = document.getElementById("wind");
+                        let windStatus = "aman";
+                        if (wind > 6 && wind <= 15) {
+                            windStatus = "siaga";
+                        } else if (wind > 15) {
+                            windStatus = "bahaya";
+                        }
+
+                        windElement.innerText = `Wind ${wind.toFixed(2)} meter/detik (${windStatus})`;
+                    })
+            };
+
+            setInterval(updateData, 800);
+        });
+    </script>
+</body>
+
+</html>
