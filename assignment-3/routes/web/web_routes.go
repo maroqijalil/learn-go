@@ -1,4 +1,4 @@
-package api
+package web
 
 import (
 	"assignment-3/controllers"
@@ -6,5 +6,6 @@ import (
 )
 
 func InitWeb(router *gin.Engine, controllers *controllers.Controllers) {
-	router.
+	router.LoadHTMLGlob("templates/*.html")
+	router.GET("/", controllers.Index)
 }

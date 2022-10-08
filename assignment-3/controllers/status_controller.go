@@ -13,5 +13,9 @@ func (controller Controllers) GetStatus(context *gin.Context) {
 		return
 	}
 
-	context.JSON(http.StatusCreated, status)
+	context.JSON(http.StatusOK, status)
+}
+
+func (_ Controllers) Index(context *gin.Context) {
+	context.HTML(http.StatusOK, "index.html", nil)
 }
