@@ -1,5 +1,5 @@
 package models
 
 type Status struct {
-	status Weather
+	Status Weather `json:"status"`
 }

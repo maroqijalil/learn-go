@@ -1,18 +1,15 @@
 package routes
 
 import (
-	"assignment-2/controllers"
-
+	"assignment-3/controllers"
+	"assignment-3/routes/api"
 	"github.com/gin-gonic/gin"
 )
 
 func InitServer(controllers *controllers.Controllers) *gin.Engine {
 	router := gin.Default()
 
-	router.POST("/orders", controllers.CreateOrder)
-	router.GET("/orders", controllers.GetOrders)
-	router.PUT("/orders/:orderId", controllers.UpdateOrder)
-	router.DELETE("/orders/:orderId", controllers.DeleteOrder)
+	api.InitApi(router, controllers)
 
 	return router
 }

@@ -1,6 +1,6 @@
 package models
 
 type Weather struct {
-	water float64
-	wind  float64
+	Water float64 `json:"water"`
+	Wind  float64 `json:"wind"`
 }
