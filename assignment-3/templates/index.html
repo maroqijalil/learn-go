@@ -66,9 +66,7 @@
                         } else if (water > 8) {
                             waterStatus = "bahaya";
                         }
-
                         waterElement.innerText = `Water ${water.toFixed(2)} meter (${waterStatus})`;
-
 
                         const wind = data.status.wind;
                         const windElement = document.getElementById("wind");
@@ -78,12 +76,11 @@
                         } else if (wind > 15) {
                             windStatus = "bahaya";
                         }
-
                         windElement.innerText = `Wind ${wind.toFixed(2)} meter/detik (${windStatus})`;
                     })
             };
 
-            setInterval(updateData, 800);
+            setInterval(updateData, 5000);
         });
     </script>
 </body>
